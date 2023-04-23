@@ -48,6 +48,8 @@ else
 	# compile specific packages with checks
 	for PKG in $PACKAGES; do
 		for FEED in $ALL_CUSTOM_FEEDS; do
+			echo "Try to installing $PKG from $FEED"
+
 			./scripts/feeds install -p "$FEED" -f "$PKG"
 		done
 		make \
