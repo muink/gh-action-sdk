@@ -18,9 +18,13 @@ if [ -z "$NO_DEFAULT_FEEDS" ]; then
 		feeds.conf.default > feeds.conf
 fi
 
-echo "src-link $FEEDNAME /feed/" >> feeds.conf
+ALL_CUSTOM_FEEDS=
 
-ALL_CUSTOM_FEEDS="$FEEDNAME "
+if [ -z "$NO_REPO_FEEDS" ]; then
+	echo "src-link $FEEDNAME /feed/" >> feeds.conf
+	ALL_CUSTOM_FEEDS+="$FEEDNAME "
+fi
+
 #shellcheck disable=SC2153
 for EXTRA_FEED in $EXTRA_FEEDS; do
 	echo "$EXTRA_FEED" | tr '|' ' ' >> feeds.conf
