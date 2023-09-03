@@ -67,4 +67,5 @@ The action reads a few env variables:
 * `NO_REPO_FEEDS` disable adding the default working directory as feeds
 * `NO_REFRESH_CHECK` disable check if patches need a refresh.
 * `NO_SHFMT_CHECK` disable check if init files are formated
+* `PACKAGES` packages to compile.
 * `V` changes the build verbosity level.
