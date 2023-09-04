@@ -33,6 +33,8 @@ done
 
 cat feeds.conf
 
+rm -rf dl; ln -s /dl dl
+
 ./scripts/feeds update -a > /dev/null
 make defconfig > /dev/null
 

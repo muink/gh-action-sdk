@@ -52,6 +52,8 @@ The action reads a few env variables:
 * `ARCH` determines the used OpenWrt SDK Docker container.
 * `ARTIFACTS_DIR` determines where built packages and build logs are saved.
   Defaults to the default working directory (`GITHUB_WORKSPACE`).
+* `DL_DIR` determines where download source code packages are saved.
+  Defaults to the default working directory (`GITHUB_WORKSPACE`).
 * `BUILD_LOG` stores build logs in `./logs`.
 * `CONTAINER` can set other SDK containers than `openwrt/sdk`.
 * `EXTRA_FEEDS` are added to the `feeds.conf`, where `|` are replaced by white
