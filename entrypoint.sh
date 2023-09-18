@@ -147,9 +147,9 @@ if [ "$INDEX" = '1' ];then
 fi
 
 if [ -d bin/ ]; then
-	mv bin/ /artifacts/
+	cp -Rf bin/ /artifacts/
 fi
 
 if [ -d logs/ ]; then
-	mv logs/ /artifacts/
+	cp -Rf logs/ /artifacts/
 fi
