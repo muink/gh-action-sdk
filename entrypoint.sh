@@ -2,6 +2,11 @@
 
 set -ef
 
+for d in bin logs; do
+	mkdir -p /artifacts/$d 2>/dev/null
+	ln -s /artifacts/$d $d
+done
+
 FEEDNAME="${FEEDNAME:-action}"
 BUILD_LOG="${BUILD_LOG:-1}"
 
@@ -144,12 +149,4 @@ fi
 
 if [ "$INDEX" = '1' ];then
 	make package/index
-fi
-
-if [ -d bin/ ]; then
-	cp -Rf bin/ /artifacts/
-fi
-
-if [ -d logs/ ]; then
-	cp -Rf logs/ /artifacts/
 fi
