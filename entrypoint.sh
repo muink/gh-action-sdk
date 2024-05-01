@@ -54,6 +54,10 @@ for EXTRA_FEED in $EXTRA_FEEDS; do
 	ALL_CUSTOM_FEEDS+="$(echo "$EXTRA_FEED" | cut -d'|' -f2) "
 done
 
+group "echo User:UID"
+echo $USER:$UID
+endgroup
+
 group "feeds.conf"
 cat feeds.conf
 endgroup
