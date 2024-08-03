@@ -50,8 +50,8 @@ fi
 
 #shellcheck disable=SC2153
 for EXTRA_FEED in $EXTRA_FEEDS; do
-	echo "$EXTRA_FEED" | tr '|' ' ' >> feeds.conf
-	ALL_CUSTOM_FEEDS+="$(echo "$EXTRA_FEED" | cut -d'|' -f2) "
+	tr '|' ' ' <<< "$EXTRA_FEED" >> feeds.conf
+	ALL_CUSTOM_FEEDS+="$(cut -f2 -d'|' <<< "$EXTRA_FEED") "
 done
 
 group "feeds.conf"
