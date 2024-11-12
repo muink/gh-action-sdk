@@ -19,6 +19,10 @@ endgroup() {
 
 trap 'endgroup' ERR
 
+# snapshot containers don't ship with the SDK to save bandwidth
+# run setup.sh to download and extract the SDK
+[ ! -f setup.sh ] || bash setup.sh
+
 for d in bin logs; do
 	mkdir -p /artifacts/$d 2>/dev/null
 	ln -s /artifacts/$d $d
