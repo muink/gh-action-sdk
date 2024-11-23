@@ -1,27 +1,24 @@
 #!/bin/bash
-
 set -ef
-
 GROUP=
-
 group() {
 	endgroup
 	echo "::group::  $1"
 	GROUP=1
 }
-
 endgroup() {
 	if [ -n "$GROUP" ]; then
 		echo "::endgroup::"
 	fi
 	GROUP=
 }
-
 trap 'endgroup' ERR
 
+group "bash setup.sh"
 # snapshot containers don't ship with the SDK to save bandwidth
 # run setup.sh to download and extract the SDK
 [ ! -f setup.sh ] || bash setup.sh
+endgroup
 
 for d in bin logs; do
 	mkdir -p /artifacts/$d 2>/dev/null
