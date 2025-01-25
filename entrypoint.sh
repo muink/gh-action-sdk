@@ -24,6 +24,7 @@ for d in bin logs; do
 	mkdir -p /artifacts/$d 2>/dev/null
 	ln -s /artifacts/$d $d
 done
+ln -s /feeds feeds
 rm -rf dl; ln -s /dl dl
 
 FEEDNAME="${FEEDNAME:-action}"

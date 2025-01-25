@@ -7,10 +7,11 @@ runs:
     - run: |
         echo "artifacts_dir=${ARTIFACTS_DIR:-$GITHUB_WORKSPACE}" >> "$GITHUB_OUTPUT"
         echo "feed_dir=${FEED_DIR:-$GITHUB_WORKSPACE}" >> "$GITHUB_OUTPUT"
+        echo "feeds_dir=${FEEDS_DIR:-$GITHUB_WORKSPACE}" >> "$GITHUB_OUTPUT"
         echo "dl_dir=${DL_DIR:-$GITHUB_WORKSPACE}" >> "$GITHUB_OUTPUT"
       shell: bash
       id: inputs
-    - run: sudo chown -R 1000:1000 ${{ steps.inputs.outputs.artifacts_dir }} ${{ steps.inputs.outputs.feed_dir }} ${{ steps.inputs.outputs.dl_dir }}
+    - run: sudo chown -R 1000:1000 ${{ steps.inputs.outputs.artifacts_dir }} ${{ steps.inputs.outputs.feed_dir }} ${{ steps.inputs.outputs.feeds_dir }} ${{ steps.inputs.outputs.dl_dir }}
       shell: bash
     -
       name: Set up Docker QEMU
@@ -48,6 +49,7 @@ runs:
           --env V \
           -v ${{ steps.inputs.outputs.artifacts_dir }}:/artifacts \
           -v ${{ steps.inputs.outputs.feed_dir }}:/feed \
+          -v ${{ steps.inputs.outputs.feeds_dir }}:/feeds \
           -v ${{ steps.inputs.outputs.dl_dir }}:/dl \
           sdk
       shell: bash
@@ -55,6 +57,9 @@ runs:
       shell: bash
       if: always()
     - run: sudo chown -R --reference=${{ steps.inputs.outputs.feed_dir }}/.. ${{ steps.inputs.outputs.feed_dir }}
+      shell: bash
+      if: always()
+    - run: sudo chown -R --reference=${{ steps.inputs.outputs.feeds_dir }}/.. ${{ steps.inputs.outputs.feeds_dir }}
       shell: bash
       if: always()
     - run: sudo chown -R --reference=${{ steps.inputs.outputs.dl_dir }}/.. ${{ steps.inputs.outputs.dl_dir }}

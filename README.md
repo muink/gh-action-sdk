@@ -53,6 +53,8 @@ The action reads a few env variables:
   E.g. `x86_64` or `x86_64-22.03.2`.
 * `ARTIFACTS_DIR` determines where built packages and build logs are saved.
   Defaults to the default working directory (`GITHUB_WORKSPACE`).
+* `FEEDS_DIR` determines where download feeds repo are saved.
+  Defaults to the default working directory (`GITHUB_WORKSPACE`).
 * `DL_DIR` determines where download source code packages are saved.
   Defaults to the default working directory (`GITHUB_WORKSPACE`).
 * `BUILD_LOG` stores build logs in `./logs`.
